@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pokédex</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+    <body>
+        <header id="cabecalho">
+            <div id="box-images-logo">
+                <img src="./images/logo_pokedex.png" alt="Logo da Pokédex" id="imagens-logo-site">
+                <img src="./images/pokebol.png" alt="Logo da Pokédex" id="pokebol-logo">
+            </div>
+        </header>
+
+        <main id="box-all">
+            <nav id="nav-pokemons">
+                <div id="box-content-nav">
+                    <figure id="box-prancheta-caption">
+                        <img src="./images/ico_pokedex.png" alt="Ícone prancheta PokéDex">
+                        <figcaption id="num-pokemon-encontrado">1208</figcaption>
+                    </figure>
+
+                    <div id="box-pesquisa">
+                        <p id="text-box-pesquisa">Quem é esse Pokemon?</p>
+                        <div id="box-input-pesquisa">
+                            <input type="text" placeholder="Informe o nome" id="input-pesquisa">
+                            <button id="btn-done-input"><img src="./images/lupa.png" alt="Lupa"></button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </nav>
+        </main>
+
+        <footer id="rodape">
+            <p>Desenvolvido por <strong>Roger Henrique Diegoli</strong></p>
+            <p>Consumindo dados da API <a href="https://pokeapi.co/api/v2/pokemon/" target="_blank"><strong>PokéAPI</strong></a></p>
+        </footer>
+        <script src="scripts/javascript.js"></script>
+    </body>
+</html>

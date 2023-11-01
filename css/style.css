@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Passion+One&display=swap');
+
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Inter', sans-serif;
+}
+
+/*Cabeçalho completo*/
+#cabecalho{
+    background-image: url('../images/fundoHeader.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 200px;
+    display: flex;
+    border-bottom: 5px solid #6F6F6F;
+}
+
+#imagens-logo-site{
+    width: 280px; 
+}
+
+#pokebol-logo{
+    width: 120px;
+}
+
+#box-images-logo{
+    margin: auto;
+}
+
+/*Menu de Navegação*/
+#nav-pokemons{
+    width: 100%;
+    height: 90px;
+    background-color: #F2f2f2;
+    display: flex;
+}
+
+#box-content-nav{
+    margin: auto;
+    width: 1000px;
+    height: 100%;
+}
+
+#box-pesquisa{
+    position: relative;
+    top: -55px;
+    float: right;
+}
+
+/*box-input-pesquisa input-pesquisa btn-done-input*/
+
+#box-input-pesquisa{
+    width: 350px;
+    height: 35px;
+    border: 2px solid #C5C5C5;
+    padding: 5px;
+    border-radius: 30px;
+}
+
+#box-pesquisa > p{
+    margin-bottom: 3px;
+    font-weight: bolder;
+    position: relative;
+    left: 180px;
+}
+
+#input-pesquisa{
+    height: 30px;
+    float: left;
+    padding: 3px;
+    padding-left: 10px;
+    border-radius: 35px;
+    width: 85%;
+    margin-right: 3px;
+    border: none;
+}
+
+#input-pesquisa::placeholder{
+    color: #c3c3c3;
+    font-size: 11pt;
+}
+
+#btn-done-input{
+    width: 35px;
+    height: 35px;
+    border: none;
+    background-color:  lightgray;
+    border-radius: 20px;
+    color: #C5C5C5;
+    transition: 0.5s;
+}
+
+#btn-done-input:hover{
+    cursor: pointer;
+    transition: 0.5s;
+    background-color: rgb(187, 187, 187);
+}
+
+#box-prancheta-caption{
+    display: flex;
+    width: 110px;
+    position: relative;
+    top: 12px;
+}
+
+#box-prancheta-caption > figcaption{
+    margin: auto;
+    font-weight: bolder;
+}
