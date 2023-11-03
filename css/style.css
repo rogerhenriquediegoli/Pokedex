@@ -157,6 +157,20 @@
     background-color: violet;
 }
 
+#btn-load-more{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    border-radius: 25px;
+    font-weight: bolder;
+    background-color: #3BA7E4;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    border: none;
+    font-size: 12pt;
+    color: white;
+
+}
+
 
 
 
