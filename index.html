@@ -26,7 +26,7 @@
                     <p id="text-box-pesquisa">Quem é esse Pokemon?</p>
                     <div id="box-input-pesquisa">
                         <input type="text" placeholder="Informe o nome" id="input-pesquisa">
-                        <button id="btn-done-input"><img src="./images/lupa.png" alt="Lupa"></button>
+                        <button id="btn-done-input" onclick="filtrar()"><img src="./images/lupa.png" alt="Lupa"></button>
                     </div>
                     
                 </div>
@@ -34,11 +34,7 @@
         </nav>
 
         <main id="box-all">
-            <ul id="box-pokemons">
-
-                
-            </ul>
-            <button id="btn-load-more" onclick="carregarMais()">Carregar mais...</button>
+            <ul id="box-pokemons"></ul>
         </main>
 
         <footer id="rodape">

@@ -6,6 +6,122 @@
     font-family: 'Inter', sans-serif;
 }
 
+body{
+    overflow-x: hidden;
+}
+
+:root {
+    --water: #3498db;
+    --fire: #e74c3c;
+    --grass: #2ecc71;
+    --electric: #f1c40f;
+    --ice: #3498db;
+    --fighting: #a61c00;
+    --poison: #8e44ad;
+    --ground: #d35400;
+    --psychic: #e74c3c;
+    --bug: #27ae60;
+    --rock: #bdc3c7;
+    --ghost: #34495e;
+    --steel: #95a5a6;
+    --flying: #85c1e9;
+    --dark: #34495e;
+    --dragon: #9b59b6;
+    --fairy: #e74c3c;
+    --normal: #f1c40f;
+  }
+  
+  /* Classes que alteram o plano de fundo para cada tipo */
+  .water {
+    background-color: var(--water);
+    color: white;
+  }
+  
+  .fire {
+    background-color: var(--fire);
+    color: white;
+  }
+  
+  .grass {
+    background-color: var(--grass);
+    color: white;
+  }
+  
+  .electric {
+    background-color: var(--electric);
+    color: black;
+  }
+  
+  .ice {
+    background-color: var(--ice);
+    color: black;
+  }
+  
+  .fighting {
+    background-color: var(--fighting);
+    color: white;
+  }
+  
+  .poison {
+    background-color: var(--poison);
+    color: white;
+  }
+  
+  .ground {
+    background-color: var(--ground);
+    color: white;
+  }
+  
+  .psychic {
+    background-color: var(--psychic);
+    color: white;
+  }
+  
+  .bug {
+    background-color: var(--bug);
+    color: white;
+  }
+  
+  .rock {
+    background-color: var(--rock);
+    color: black;
+  }
+  
+  .ghost {
+    background-color: var(--ghost);
+    color: white;
+  }
+  
+  .steel {
+    background-color: var(--steel);
+    color: black;
+  }
+  
+  .flying {
+    background-color: var(--flying);
+    color: black;
+  }
+  
+  .dark {
+    background-color: var(--dark);
+    color: white;
+  }
+  
+  .dragon {
+    background-color: var(--dragon);
+    color: white;
+  }
+  
+  .fairy {
+    background-color: var(--fairy);
+    color: black;
+  }
+  
+  .normal {
+    background-color: var(--normal);
+    color: black;
+  }  
+
 /*Cabeçalho completo*/
 #cabecalho{
     background-image: url('../images/fundoHeader.png');
@@ -152,13 +268,11 @@
     border-radius: 8px;
     margin-right: 5px;
     margin-top: 4px;
-    color: white;
     border: none;
-    background-color: violet;
 }
 
 #btn-load-more{
-    position: absolute;
+    float: right;
     width: 150px;
     height: 40px;
     border-radius: 25px;
@@ -167,13 +281,7 @@
     box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
     border: none;
     font-size: 12pt;
-    color: white;
-
 }
-
-
-
-
 
 /*Rodapé*/
 #rodape{

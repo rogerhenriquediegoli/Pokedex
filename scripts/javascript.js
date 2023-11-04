@@ -3,6 +3,7 @@ var validacao = true
 var listaPokemonsHtml = document.getElementById('box-pokemons')
 var offset = 0
 var limit = 17
+var input_pesquisa = document.getElementById('input-pesquisa')
 
 async function requisicaoPokemon(){
     if(validacao){
@@ -19,10 +20,10 @@ async function requisicaoPokemon(){
             let nomePokemon = element['name']
             let imgPokemon = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${cont}.png`
             let typesPokemon = []
-            fetch(`https://pokeapi.co/api/v2/pokemon-form/${cont}/`)//GET Types
+             fetch(`https://pokeapi.co/api/v2/pokemon-form/${cont}/`)//GET Types
             .then(response => response.json())
-            .then(function (data){
-                data['types'].forEach(element => {
+            .then(async function (data){
+                await data['types'].forEach(element => {
                     let tipos = element['type']['name']
                     typesPokemon.push(tipos)
                 });
@@ -30,8 +31,8 @@ async function requisicaoPokemon(){
             .catch(function (error){
                 console.log(error);
             })
+            pokemons.push({"id": cont, "name": nomePokemon, "imgPokemon": imgPokemon, "types": typesPokemon})
             cont++
-            pokemons.push({"name": nomePokemon, "imgPokemon": imgPokemon, "types": typesPokemon})
         });
       })
       .catch(error => {
@@ -53,13 +54,13 @@ function mostrarPokemons(){
                 </div>
                 <div id="container-information-pokemon">
                     <p id="nameAndId"><strong>#${cont} ${pokemons[i]['name']}</strong></p>
-                    <button>${pokemons[i]['types'][0]}</button><button>${pokemons[i]['types'][1]}</button>
+                    ${verificationBtns(i)}
                 </div>
             `
             listaPokemonsHtml.appendChild(item)
             cont++
         }
-    }, 500);
+    }, 800);
 }
 
 function carregarMais(){
@@ -74,12 +75,24 @@ function carregarMais(){
                 </div>
                 <div id="container-information-pokemon">
                     <p id="nameAndId"><strong>#${cont} ${pokemons[i]['name']}</strong></p>
-                    <button>${pokemons[i]['types'][0]}</button><button>${pokemons[i]['types'][1]}</button>
+                    ${verificationBtns(i)}
                 </div>
             `
             listaPokemonsHtml.appendChild(item)
             cont++
         }
+        window.scrollTo(0, 500)
+        scrollIntoView({ behavior: 'smooth' })
+}
+
+function verificationBtns(cont){
+    let estrutura = ""
+    if(pokemons[cont].types.length != 2){
+        estrutura = `<button class="${pokemons[cont].types[0]}">${pokemons[cont]['types'][0]}</button>`
+    }else{
+        estrutura = `<button class="${pokemons[cont].types[0]}">${pokemons[cont]['types'][0]}</button><button class="${pokemons[cont].types[1]}">${pokemons[cont]['types'][1]}</button>`
+    }
+    return estrutura
 }
 
 mostrarPokemons()
