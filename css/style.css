@@ -244,6 +244,7 @@ body{
     width: 100%;
     padding: auto;
     min-height: 700px;
+    display: flex;
 }
 
 #box-pokemons{
@@ -252,6 +253,9 @@ body{
     padding-left: 28px;
     list-style: none;
     margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #box-pokemons > li{
@@ -302,11 +306,25 @@ body{
 
 }
 
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.list-item {
+  width: 200px; /* Largura dos itens */
+  height: 100px; /* Altura dos itens */
+  margin: 10px; /* Espaçamento entre os itens */
+  background-color: #ccc;
+  text-align: center;
+  line-height: 100px; /* Centraliza o conteúdo verticalmente */
+}
+
 #container-pokemons-and-btnload{
   margin: 0 auto;
   width: 1100px;
   min-height: 100%;
-
 }
 
 /*Rodapé*/
