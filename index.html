@@ -23,7 +23,7 @@
             <div id="box-content-nav">
                 <figure id="box-prancheta-caption">
                     <img src="./images/ico_pokedex.png" alt="Ícone prancheta PokéDex">
-                    <figcaption id="num-pokemon-encontrado">1208</figcaption>
+                    <figcaption id="num-pokemon-encontrado">1292</figcaption>
                 </figure>
 
                 <div id="box-pesquisa">
@@ -38,11 +38,14 @@
         </nav>
 
         <main id="box-all">
-            <ul id="box-pokemons"></ul>
-            <button id="btn-load-more" onclick="carregarMais()">Carregar mais...</button>
+            <div id="container-pokemons-and-btnload">
+                <ul id="box-pokemons"></ul>
+                <button id="btn-load-more" onclick="carregarMais()">Carregar mais...</button>
+            </div>
         </main>
-
+        
         <footer id="rodape">
+
             <span>
                 <p>Desenvolvido por <strong>Roger Henrique Diegoli</strong></p>
                 <p>Consumindo dados da API <a href="https://pokeapi.co/api/v2/pokemon/" target="_blank"><em>PokéAPI</em></a></p>

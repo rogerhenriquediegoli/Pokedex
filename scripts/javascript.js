@@ -46,7 +46,6 @@ async function requisicaoPrimeirosPokemon() {
         const typesPokemon = typeData['types'].map(type => type['type']['name']);
     
         if (cont <= 18) {
-            console.log(typesPokemon);
             const item = document.createElement('li');
             item.innerHTML = `
             <div id="container-img-pokemon">
@@ -62,11 +61,12 @@ async function requisicaoPrimeirosPokemon() {
     
         pokemons.push({ "id": cont, "name": nomePokemon, "imgPokemon": imgPokemon, "types": typesPokemon });
         cont++;
+        
         }
     } catch (error) {
         console.error('Ocorreu um erro:', error);
     }
-    }
+}
 
 requisicaoPrimeirosPokemon()
 
@@ -88,8 +88,8 @@ function carregarMais(){
             listaPokemonsHtml.appendChild(item)
             cont++
         }
-        window.scrollTo(0, 500)
-        scrollIntoView({ behavior: 'smooth' })
+        let loadMoreButton = document.getElementById('btn-load-more')
+        loadMoreButton.scrollIntoView({ behavior: 'smooth' });
 }
 
 function verificationBtns(types){
@@ -108,8 +108,9 @@ function filtrar(){
     }
     let resultados = []
     let campoDig = input_pesquisa.value.toLowerCase()
+    input_pesquisa.value = ""
     pokemons.forEach(element => {
-        if(element['types'].includes(campoDig)){
+        if(element['types'].includes(campoDig) || element['name'] == campoDig || element.id == campoDig){
             resultados.push(element)
         }
     });
@@ -127,7 +128,6 @@ function filtrar(){
             `
             listaPokemonsHtml.appendChild(item)
     });
-    
-
-
+    let numEncontrados = document.getElementById('num-pokemon-encontrado')
+    numEncontrados.innerText = resultados.length
 }

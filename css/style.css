@@ -11,24 +11,24 @@ body{
 }
 
 :root {
-    --water: #3498db;
-    --fire: #e74c3c;
-    --grass: #2ecc71;
-    --electric: #f1c40f;
-    --ice: #3498db;
-    --fighting: #a61c00;
-    --poison: #8e44ad;
-    --ground: #d35400;
-    --psychic: #e74c3c;
-    --bug: #27ae60;
-    --rock: #bdc3c7;
+    --water: #4592c4;
+    --fire: #fd7d24;
+    --grass: #9bcc50;
+    --electric: #eed535;
+    --ice: #51c4e7;
+    --fighting: #d56723;
+    --poison: #b97fc9;
+    --ground: linear-gradient(180deg, #f7de3f 50%, #ab9842 50%);
+    --psychic: #f366b9;
+    --bug: #729f3f;
+    --rock: #a38c21;
     --ghost: #34495e;
-    --steel: #95a5a6;
-    --flying: #85c1e9;
-    --dark: #34495e;
-    --dragon: #9b59b6;
-    --fairy: #e74c3c;
-    --normal: #f1c40f;
+    --steel: #9eb7b8;
+    --flying: linear-gradient(180deg, #3dc7ef 50%, #bdb9b8 50%);
+    --dark: #707070;
+    --dragon: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
+    --fairy: #fdb9e9;
+    --normal: #a4acaf;
   }
   
   /* Classes que alteram o plano de fundo para cada tipo */
@@ -68,8 +68,8 @@ body{
   }
   
   .ground {
-    background-color: var(--ground);
-    color: white;
+    background: var(--ground);
+    color: black;
   }
   
   .psychic {
@@ -98,7 +98,7 @@ body{
   }
   
   .flying {
-    background-color: var(--flying);
+    background: var(--flying);
     color: black;
   }
   
@@ -108,7 +108,7 @@ body{
   }
   
   .dragon {
-    background-color: var(--dragon);
+    background: var(--dragon);
     color: white;
   }
   
@@ -241,17 +241,17 @@ body{
 
 /*Área Pokemon*/
 #box-all{
-    display: flex;
     width: 100%;
     padding: auto;
+    min-height: 700px;
 }
 
 #box-pokemons{
-    margin: auto;
-    width: 1100px;
+    width: 100%;
     padding: 8px;
     padding-left: 28px;
     list-style: none;
+    margin: 0 auto;
 }
 
 #box-pokemons > li{
@@ -296,6 +296,17 @@ body{
     box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
     border: none;
     font-size: 12pt;
+    color: white;
+    margin-right: 15px;
+    margin-bottom: 10px;
+
+}
+
+#container-pokemons-and-btnload{
+  margin: 0 auto;
+  width: 1100px;
+  min-height: 100%;
+
 }
 
 /*Rodapé*/
