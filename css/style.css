@@ -124,7 +124,7 @@ body{
 
 /*Cabeçalho completo*/
 #cabecalho{
-    background-image: url('../images/fundoHeader.png');
+    background-image: url('../images/fundoHeaderBlue.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 200px;
@@ -222,6 +222,21 @@ body{
 #box-prancheta-caption > figcaption{
     margin: auto;
     font-weight: bolder;
+}
+
+#select-mode-color{
+  position: absolute;
+  top: -15px;
+  margin: 5px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+#select-mode-color > option{
+  color: black;
 }
 
 /*Área Pokemon*/

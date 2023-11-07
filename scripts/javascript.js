@@ -1,67 +1,74 @@
 var pokemons = []
-var validacao = true
-var listaPokemonsHtml = document.getElementById('box-pokemons')
+const listaPokemonsHtml = document.getElementById('box-pokemons')
+const input_pesquisa = document.getElementById('input-pesquisa')
+const select_mode = document.getElementById('select-mode-color')
 var offset = 0
 var limit = 17
-var input_pesquisa = document.getElementById('input-pesquisa')
 
-async function requisicaoPokemon(){
-    if(validacao){
-        await fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1017')
-      .then(response => {
+select_mode.addEventListener('change', () => {
+    let pokebol = document.getElementById('pokebol-logo')
+    let header = document.getElementById('cabecalho')
+    let footer = document.getElementById('rodape')
+    switch(select_mode.value){
+        case "blue":
+            header.style.backgroundImage = "url('../images/fundoHeaderBlue.png')"
+            footer.style.backgroundColor = "#3BA7E4"
+            pokebol.src = "../images/pokebolBlue.png"
+            break
+        case "red":
+            header.style.backgroundImage = "url('../images/fundoHeaderRed.png')"
+            footer.style.backgroundColor = "#DD3528"
+            pokebol.src = "../images/pokebolRed.png"
+            break
+    }
+})
+
+async function requisicaoPrimeirosPokemon() {
+    try {
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1292');
         if (!response.ok) {
-          throw new Error('Erro na requisição');
+        throw new Error('Erro na requisição');
         }
-        return response.json();
-      })
-      .then(data => {
-        let cont = 1
-        data['results'].forEach(element => {
-            let nomePokemon = element['name']
-            let imgPokemon = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${cont}.png`
-            let typesPokemon = []
-             fetch(`https://pokeapi.co/api/v2/pokemon-form/${cont}/`)//GET Types
-            .then(response => response.json())
-            .then(async function (data){
-                await data['types'].forEach(element => {
-                    let tipos = element['type']['name']
-                    typesPokemon.push(tipos)
-                });
-            })
-            .catch(function (error){
-                console.log(error);
-            })
-            pokemons.push({"id": cont, "name": nomePokemon, "imgPokemon": imgPokemon, "types": typesPokemon})
-            cont++
-        });
-      })
-      .catch(error => {
-        console.error('Ocorreu um erro:', error);
-      });
-      validacao = false
-    }  
-}
-
-function mostrarPokemons(){
-    requisicaoPokemon()
-    setTimeout(() => {
-        var cont = 1
-        for(let i = 0;i <= 17; i++){
-            let item = document.createElement('li')
+        const data = await response.json();
+        let cont = 1;
+    
+        for (const element of data['results']) {
+        const nomePokemon = element['name'];
+        const imgPokemon = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${cont}.png`;
+    
+        const typeResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-form/${cont}/`);
+        if (!typeResponse.ok) {
+            console.error('Erro na requisição dos tipos');
+            continue;
+        }
+    
+        const typeData = await typeResponse.json();
+        const typesPokemon = typeData['types'].map(type => type['type']['name']);
+    
+        if (cont <= 18) {
+            console.log(typesPokemon);
+            const item = document.createElement('li');
             item.innerHTML = `
-                <div id="container-img-pokemon">
-                    <img src="${pokemons[i]['imgPokemon']}" alt="${pokemons[i]['name']}">
-                </div>
-                <div id="container-information-pokemon">
-                    <p id="nameAndId"><strong>#${cont} ${pokemons[i]['name']}</strong></p>
-                    ${verificationBtns(i)}
-                </div>
-            `
-            listaPokemonsHtml.appendChild(item)
-            cont++
+            <div id="container-img-pokemon">
+                <img src="${imgPokemon}" alt="${element['name']}">
+            </div>
+            <div id="container-information-pokemon">
+                <p id="nameAndId"><strong>#${cont} ${element['name']}</strong></p>
+                ${verificationBtns(typesPokemon)}
+            </div>
+            `;
+            listaPokemonsHtml.appendChild(item);
         }
-    }, 800);
-}
+    
+        pokemons.push({ "id": cont, "name": nomePokemon, "imgPokemon": imgPokemon, "types": typesPokemon });
+        cont++;
+        }
+    } catch (error) {
+        console.error('Ocorreu um erro:', error);
+    }
+    }
+
+requisicaoPrimeirosPokemon()
 
 function carregarMais(){
         var cont = limit + 2
@@ -75,7 +82,7 @@ function carregarMais(){
                 </div>
                 <div id="container-information-pokemon">
                     <p id="nameAndId"><strong>#${cont} ${pokemons[i]['name']}</strong></p>
-                    ${verificationBtns(i)}
+                    ${verificationBtns(pokemons[i]['types'])}
                 </div>
             `
             listaPokemonsHtml.appendChild(item)
@@ -85,14 +92,42 @@ function carregarMais(){
         scrollIntoView({ behavior: 'smooth' })
 }
 
-function verificationBtns(cont){
+function verificationBtns(types){
     let estrutura = ""
-    if(pokemons[cont].types.length != 2){
-        estrutura = `<button class="${pokemons[cont].types[0]}">${pokemons[cont]['types'][0]}</button>`
+    if(types.length != 2){ 
+        estrutura = `<button class="${types[0]}">${types[0]}</button>`
     }else{
-        estrutura = `<button class="${pokemons[cont].types[0]}">${pokemons[cont]['types'][0]}</button><button class="${pokemons[cont].types[1]}">${pokemons[cont]['types'][1]}</button>`
+        estrutura = `<button class="${types[0]}">${types[0]}</button><button class="${types[1]}">${types[1]}</button>`
     }
     return estrutura
 }
 
-mostrarPokemons()
+function filtrar(){
+    if(input_pesquisa.value == ""){
+        location.reload()
+    }
+    let resultados = []
+    let campoDig = input_pesquisa.value.toLowerCase()
+    pokemons.forEach(element => {
+        if(element['types'].includes(campoDig)){
+            resultados.push(element)
+        }
+    });
+    listaPokemonsHtml.innerHTML = ""
+    resultados.forEach(element => {
+        let item = document.createElement('li')
+            item.innerHTML = `
+                <div id="container-img-pokemon">
+                    <img src="${element['imgPokemon']}" alt="${element['name']}">
+                </div>
+                <div id="container-information-pokemon">
+                    <p id="nameAndId"><strong>#${element['id']} ${element['name']}</strong></p>
+                    ${verificationBtns(element['types'])}
+                </div>
+            `
+            listaPokemonsHtml.appendChild(item)
+    });
+    
+
+
+}
