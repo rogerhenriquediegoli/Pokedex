@@ -77,8 +77,7 @@ function carregarMais(){
             listaPokemonsHtml.appendChild(item)
             cont++
         }
-        let loadMoreButton = document.getElementById('btn-load-more')
-        loadMoreButton.scrollIntoView({ behavior: 'smooth' });
+        btn_load_more.scrollIntoView({ behavior: 'smooth' });
 }
 
 function verificationBtns(types){
