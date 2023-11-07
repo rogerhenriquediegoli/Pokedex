@@ -1,27 +1,18 @@
 var pokemons = []
 const listaPokemonsHtml = document.getElementById('box-pokemons')
 const input_pesquisa = document.getElementById('input-pesquisa')
-const select_mode = document.getElementById('select-mode-color')
+const btn_load_more = document.getElementById('btn-load-more')
+const numEncontrados = document.getElementById('num-pokemon-encontrado')
 var offset = 0
 var limit = 17
 
-select_mode.addEventListener('change', () => {
-    let pokebol = document.getElementById('pokebol-logo')
-    let header = document.getElementById('cabecalho')
-    let footer = document.getElementById('rodape')
-    switch(select_mode.value){
-        case "blue":
-            header.style.backgroundImage = "url('../images/fundoHeaderBlue.png')"
-            footer.style.backgroundColor = "#3BA7E4"
-            pokebol.src = "../images/pokebolBlue.png"
-            break
-        case "red":
-            header.style.backgroundImage = "url('../images/fundoHeaderRed.png')"
-            footer.style.backgroundColor = "#DD3528"
-            pokebol.src = "../images/pokebolRed.png"
-            break
+function verificationBtnLoad(){
+    if(numEncontrados.innerHTML != "1292"){
+        btn_load_more.style.display = "none"
+    }else{
+        btn_load_more.style.display = "block"
     }
-})
+}
 
 async function requisicaoPrimeirosPokemon() {
     try {
@@ -67,8 +58,6 @@ async function requisicaoPrimeirosPokemon() {
         console.error('Ocorreu um erro:', error);
     }
 }
-
-requisicaoPrimeirosPokemon()
 
 function carregarMais(){
         var cont = limit + 2
@@ -128,6 +117,10 @@ function filtrar(){
             `
             listaPokemonsHtml.appendChild(item)
     });
-    let numEncontrados = document.getElementById('num-pokemon-encontrado')
-    numEncontrados.innerText = resultados.length
+    numEncontrados.innerHTML = resultados.length
+    if(resultados.length == 0){
+        listaPokemonsHtml.innerHTML = "<h3>Nenhum Pokémon corresponde à sua pesquisa!</h3>"
+    }
+    verificationBtnLoad()
 }
+requisicaoPrimeirosPokemon()
