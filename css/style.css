@@ -212,6 +212,10 @@ body{
     transition: 0.5s;
 }
 
+#btn-done-input:active{
+  background-color: gray;
+}
+
 #btn-done-input:hover{
     cursor: pointer;
     transition: 0.5s;
@@ -249,7 +253,7 @@ body{
 #box-all{
     width: 100%;
     padding: auto;
-    min-height: 740px;
+    min-height: 725px;
     display: flex;
 }
 
@@ -264,7 +268,7 @@ body{
 
 #box-pokemons > li{
     width: 160px;
-    height: 210px;
+    height: 100%;
     background-color: #F1F1F1;
     border-radius: 20px;
     display: inline-block;
@@ -290,6 +294,10 @@ body{
     height: 150px;
     background-color: #D7D7D7;
     border-radius: 20px;
+}
+
+#container-img-pokemon > img{
+  margin: 0 auto;
 }
 
 #container-information-pokemon{
@@ -320,7 +328,11 @@ body{
     margin-bottom: 10px;
     opacity: 0;
     animation: fadeIn 1s ease-in-out forwards;
+    cursor: pointer;
+}
 
+#btn-load-more:active{
+  background-color: #b82d23;
 }
 
 #container-pokemons-and-btnload{
